@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Crumbs & Paws</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@700;800&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="viewport">
+  <div id="stage">
+    <!-- Splash -->
+    <section id="splash" class="screen">
+      <div class="splash-dots"></div>
+      <div class="logo">
+        <h1 class="logo-title">Crumbs &amp; Paws</h1>
+        <span class="logo-tag">COZY BAKERY TYCOON</span>
+      </div>
+      <div class="storefront">
+        <div class="awning"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="shopbox">
+          <div class="shopwin" id="splashWin"></div>
+          <div class="shopdoor"></div>
+          <div class="splash-chars" id="splashChars"></div>
+        </div>
+      </div>
+      <div class="loading">
+        <div class="bar big"><b id="loadFill"></b></div>
+        <p id="loadText">Warming up the ovens… 0%</p>
+      </div>
+      <div class="tip"><span class="ico" data-icon="star"></span><p>Tip: Guests with a star bubble pay double when you serve their wish!</p></div>
+      <small class="ver">v1.0.0 · local build</small>
+    </section>
+
+    <!-- Main bakery -->
+    <section id="game" class="screen" hidden>
+      <div id="sceneMain"></div>
+
+      <div class="hud">
+        <button class="profile" id="lvBox" aria-label="Level">
+          <span class="avatar" id="avatar"></span>
+          <span class="pinfo"><b>Lv. <span id="lvNum">1</span></b><span class="xpbar"><b id="xpFill"></b></span></span>
+        </button>
+        <button class="pill" data-open="shop:Coins"><span class="ico" data-icon="coin"></span><b id="coinTxt">0</b><span class="plus">+</span></button>
+        <button class="pill" data-open="shop:Gems"><span class="ico" data-icon="gem"></span><b id="gemTxt">0</b><span class="plus">+</span></button>
+        <button class="pill narrow" data-open="shop:Packs"><span class="ico" data-icon="ticket"></span><b id="ticketTxt">0</b><span class="plus">+</span></button>
+        <button class="roundbtn" data-open="settings" aria-label="Settings"><span class="ico" data-icon="gear"></span></button>
+      </div>
+
+      <button class="sidebtn" style="left:14px;top:108px" data-open="daily" aria-label="Daily check-in"><span class="ico lg" data-icon="calendar"></span><span class="badge" id="dailyBadge" hidden>1</span></button>
+      <button class="sidebtn" style="left:14px;top:168px" id="giftBtn" aria-label="Free gift"><span class="ico lg" data-icon="gift"></span><span class="sidetimer" id="giftTimer"></span></button>
+      <button class="sidebtn" style="left:324px;top:108px" data-open="shop:Packs" aria-label="Offers"><span class="ico lg" data-icon="bag"></span></button>
+      <button class="sidebtn" style="left:324px;top:168px" data-open="guests" aria-label="Guest book"><span class="ico lg" data-icon="heart"></span></button>
+
+      <button class="bake" id="bakePill" aria-label="Oven status">
+        <span class="bake-item" id="bakeIcon"></span>
+        <span class="bake-info"><small id="bakeLabel">Waffle · 3s</small><span class="bar"><b id="bakeFill"></b></span></span>
+        <b id="bakeBatch">×5</b>
+      </button>
+
+      <div class="cashier" id="cashier"></div>
+      <div class="counter">
+        <div class="clipboard"><i></i><i></i><i></i></div>
+        <span class="ctr-item ci1" id="ctrItem1"></span>
+        <span class="plate" id="ctrPlate"></span>
+      </div>
+      <button class="oven" id="oven" aria-label="Upgrade oven">
+        <i class="k1"></i><i class="k2"></i><span class="ovenwin"><span id="ovenItem"></span></span>
+        <span class="ovenlv" id="ovenLv">Lv 1</span>
+      </button>
+
+      <div id="customers"></div>
+      <div id="tables"></div>
+
+      <button class="arrow left" id="arrowL" aria-label="Previous room"><span class="ico" data-icon="arrowL"></span></button>
+      <button class="arrow right" id="arrowR" aria-label="Next room"><span class="ico" data-icon="arrowR"></span></button>
+
+      <button class="expand" id="expandBtn"><span class="ico xl" data-icon="plus"></span><span class="cost"><span class="ico sm" data-icon="gem"></span><b id="expandCost">50</b></span></button>
+      <span class="expand-label" id="expandLabel"><span class="sp" data-spark></span>New table</span>
+
+      <div class="shelfrow"><div class="shelves" id="shelves"></div></div>
+
+      <nav class="bottomnav">
+        <button class="navtile" data-open="shop:Packs"><span class="ico lg" data-icon="shop"></span><span>Shop</span></button>
+        <button class="navtile" data-open="guests"><span class="ico lg" data-icon="book"></span><span>Guests</span><span class="badge" id="guestBadge" hidden>1</span></button>
+        <button class="navtile hl" id="speedBtn"><span class="ico xl" data-icon="clock"></span><span id="speedLabel">Speed Up</span></button>
+        <button class="navtile" data-open="spin"><span class="ico lg" data-icon="wheel"></span><span>Lucky Spin</span><span class="badge" id="spinBadge" hidden>1</span></button>
+        <button class="navtile" data-open="event"><span class="ico lg" data-icon="star"></span><span>Event</span><span class="evtimer" id="evTimer">3d left</span></button>
+      </nav>
+      <div id="fx"></div>
+    </section>
+
+    <div id="modal" hidden></div>
+    <div id="toast" hidden></div>
+  </div>
+</div>
+<script src="art.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
